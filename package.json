@@ -14,8 +14,13 @@
     "parcel": "2.7.0"
   },
   "scripts": {
-    "dev": "parcel serve ./index.html",
-    "ts": "nodemon ./src/server-side/express.ts"
+    "dev:font": "parcel serve index.html",
+    "build:front": "parcel build index.html",
+    "dev": "nodemon ./src/server-side/express.ts",
+    "test": "ava",
+    "build:api": "tsc .src/server-side/express.ts",
+    "build": "yarn build:front && build:api",
+    "start": "node .src/server-side/express.ts"
   },
   "devDependencies": {
     "assert": "^2.0.0",
