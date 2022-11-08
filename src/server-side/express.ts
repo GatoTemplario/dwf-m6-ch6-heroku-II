@@ -8,7 +8,7 @@ import { AppCheck } from "firebase-admin/lib/app-check/app-check";
 
 // usar yarn add cors@2.8.5
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express()
 
 const usersCollection = fs.collection("users")
