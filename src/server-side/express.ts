@@ -1,3 +1,4 @@
+// "module": "NodeNext" resuelve esto de que no reconozca express
 import express from "express";
 import { rtdb, fs, db} from "./db"
 import { push, ref, set, onValue } from "firebase/database"

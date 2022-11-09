@@ -2,6 +2,7 @@
   "name": "capitulo5-Roomss",
   "version": "1.0.0",
   "license": "MIT",
+  "main": "express.ts",
   "engines": {
     "node": "^16.13.1"
   },
@@ -15,14 +16,15 @@
     "firebase-admin": "^11.2.0",
     "nanoid": "^3.0.0",
     "nodemon": "^2.0.20",
-    "parcel": "2.7.0"
+    "parcel": "2.7.0",
+    "typescript": "^5.0.0-dev.20221109"
   },
   "scripts": {
     "dev:font": "parcel serve index.html",
     "build:front": "parcel build index.html",
     "dev": "nodemon ./src/server-side/express.ts",
     "test": "ava",
-    "build:api": "tsc .src/server-side/express.ts",
+    "build:api": "tsc ",
     "build": "yarn build:front && build:api",
     "start": "node .src/server-side/express.ts"
   },
