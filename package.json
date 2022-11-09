@@ -2,7 +2,6 @@
   "name": "capitulo5-Roomss",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "express.ts",
   "engines": {
     "node": "^16.13.1"
   },
