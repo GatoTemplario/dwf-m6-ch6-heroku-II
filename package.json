@@ -24,7 +24,7 @@
     "dev": "nodemon ./src/server-side/express.ts",
     "test": "ava",
     "build:api": "tsc ",
-    "build": "yarn build:front && build:api",
+    "build": "yarn build:front && tsc",
     "start": "node .src/server-side/express.ts"
   },
   "devDependencies": {
