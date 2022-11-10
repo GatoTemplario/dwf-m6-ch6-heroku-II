@@ -23,6 +23,13 @@ app.use(express.static("dist"))
 app.listen(port, () => {
     console.log(`Example app listening http://localhost:${port}`);
 })
+app.get("/env", (req, res) => {
+    res.json({
+        enviroment: process.env.NODE_ENV
+    })
+})
+
+
 app.post("/signup", (req, res) => {
     const email = req.body.email
     const {nombre} = req.body
