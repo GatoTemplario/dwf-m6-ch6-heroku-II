@@ -1,7 +1,7 @@
 import { initWs } from "./server-side/ws"
 
-const API_BASE_URL = "http://localhost:"
 const PORT = 3000
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:" + PORT
 type OptionRoom = "room-nuevo" | "room-existente"
 
 const state = {
@@ -35,7 +35,7 @@ const state = {
     pushMessages( newMessage: string ){
         const nombreDelUser = this.data.nombre;
         const currentState = this.getState()
-        fetch( API_BASE_URL + PORT + "/rooms/" +currentState.rtdbRoomId,{
+        fetch( API_BASE_URL + "/rooms/" +currentState.rtdbRoomId,{
             method: "POST",
             headers: { "content-type": "application/json"},
             body: JSON.stringify({
@@ -47,7 +47,7 @@ const state = {
     auth(){
         const currentState = state.getState()
 
-        fetch( API_BASE_URL + PORT + '/auth',{
+        fetch( API_BASE_URL + '/auth',{
             method: "POST",
             headers: {"content-type": 'application/json'},
             body: JSON.stringify({email: currentState.email})
@@ -68,7 +68,7 @@ const state = {
             // si puso un Id Corto
             console.log("id corto!");
             
-            fetch( API_BASE_URL + PORT + '/rooms/' + currentState.roomId, {
+            fetch( API_BASE_URL + '/rooms/' + currentState.roomId, {
                 method: "GET",
                 headers: { "content-type": 'application/json' },
             })
@@ -87,7 +87,7 @@ const state = {
             // si NO puso un Id Corto, es porque no tiene y hay que crear uno nuevo
             console.log("SIN id corto!");
 
-            fetch( API_BASE_URL + PORT + '/rooms' , {
+            fetch( API_BASE_URL + '/rooms' , {
                 method: "POST",
                 headers: { "content-type": 'application/json' },
                 body: JSON.stringify({userId: currentState.userId})
@@ -104,5 +104,4 @@ const state = {
         }
     },
 }
-
 export { state }
