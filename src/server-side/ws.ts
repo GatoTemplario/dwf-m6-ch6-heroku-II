@@ -6,8 +6,26 @@ function initWs(){
     console.log("currentstate", currentState.rtdbRoomId);
     
     // Create WebSocket connection.
-    const socket = new WebSocket('ws://localhost:8080');
+    // const socket = new WebSocket('ws://localhost:8080');
 
+// METO CODIGO
+    const nodeEnv = process.env.NODE_ENV.trim()
+    function locationHost(nodeEnv){
+        if(nodeEnv == "production"){
+            console.log("boolean true");
+            
+            return location.hostname + ":8080"  
+        }else{
+            console.log("boolean false");
+            
+            return location.host
+        }
+        
+    }
+    const protocol = window.location.protocol.includes('https') ? 'wss' : 'ws'
+    const socket = new WebSocket(`${protocol}://${locationHost(nodeEnv)}`)
+    console.log("socket: ", socket);
+// HASTA AQUI METO CODIGO
     // Connection opened
     socket.addEventListener('open', (event) => {
         socket.send(currentState.rtdbRoomId);
